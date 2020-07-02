@@ -16,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/','MyController@getHome');
+Route::get('/contact', 'MyController@contact');
 
 
