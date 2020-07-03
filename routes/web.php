@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'MyController@getHome');
+Route::get('contact', 'MyController@contact');
+Route::get('/contact','TicketsController@create');
+Route::post('/contact','TicketsController@store');
+
+
