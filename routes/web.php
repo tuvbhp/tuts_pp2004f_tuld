@@ -23,3 +23,7 @@ Route::get('/ticket/{slug?}', 'TicketsController@show');
 Route::get('/ticket/{slug?}/edit','TicketsController@edit');
 Route::post('/ticket/{slug?}/edit','TicketsController@update');    
 Route::post('/comment','CommentsController@newComment');
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('users/register', 'Auth\RegisterController@showRegistrationForm');
+Route::post('users/register', 'Auth\RegisterController@register');
