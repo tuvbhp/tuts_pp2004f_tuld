@@ -1,37 +1,39 @@
 @extends('project.master')
-@section('title', 'All users')
+@section('title', 'All posts')
 @section('content')
 <div class="container col-md-8 col-md-offset-2">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h2> All users </h2>
+            <h2> All posts </h2>
         </div>
         @if (session('status'))
         <div class="alert alert-success">
             {{ session('status') }}
         </div>
         @endif
-        @if ($users->isEmpty())
-        <p> There is no user.</p>
+        @if ($posts->isEmpty())
+        <p> There is no post.</p>
         @else
         <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Joined at</th>
+                    <th>Title</th>
+                    <th>Slug</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($users as $user)
+                @foreach($posts as $post)
                 <tr>
-                    <td>{!! $user->id !!}</td>
+                    <td>{!! $post->id !!}</td>
                     <td>
-                    <a href="{!! action('Admin\UsersController@edit', $user->id) !!}">{!! $user->name !!}</a>
+                    <a href="{!! action('PostsController@edit', $post->id) !!}">{!! $post->title !!}</a>
                     </td>
-                    <td>{!! $user->email !!}</td>
-                    <td>{!! $user->created_at !!}</td>
+                    <td>{!! $post->slug !!}</td>
+                    <td>{!! $post->created_at !!}</td>
+                    <td>{!! $post->updated_at !!}</td>
                 </tr>
                 @endforeach
             </tbody>

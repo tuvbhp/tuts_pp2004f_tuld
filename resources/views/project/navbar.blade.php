@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -11,23 +11,29 @@
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="/blog">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact">Ticket</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Ticket</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
+                    aria-haspopup="true" aria-expanded="false">
                     Dropdown
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/users/register">Register</a>
-                    <a class="dropdown-item" href="/contact">Ticket</a>
-                    <a class="dropdown-item" href="/users/login">Login</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/users/logout">Logout</a>
-                </div>
+                    @if(Auth::check())
+                    @role('manager')
+                    <a class="dropdown-item" href="/admin">Admin</a>
+                    @endrole
+                    <a href="/users/logout">{{__('Logout')}}</a>
+                    @else
+                    <a class="dropdown-item" href="/users/register">{{__('Register')}}</a>
+                    <a class="dropdown-item" href="/users/login">{{__('Login')}}</a>
+                    @endif                   
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">Disabled</a>
