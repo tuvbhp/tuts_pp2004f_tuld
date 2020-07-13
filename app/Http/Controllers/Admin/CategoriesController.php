@@ -16,7 +16,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $category = Category::all();
         return view('backend.categories.index', compact('categories'));
     }
     /**
@@ -37,10 +37,10 @@ class CategoriesController extends Controller
      */
     public function store(CategoryFormRequest $request)
     {
-        $category = new Category(array(
+        $categories = new Category(array(
             'name' => $request->get('name'),
         ));
-        $category->save();
+        $categories->save();
         return redirect('/admin/categories/create')->with('status', 'A new category has been created!');
     }
 
