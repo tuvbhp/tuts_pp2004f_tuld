@@ -16,7 +16,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $category = Category::all();
         return view('backend.categories.index', compact('categories'));
     }
     /**
